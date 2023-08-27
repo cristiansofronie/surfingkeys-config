@@ -266,12 +266,6 @@ if (location.host === 'roampdf.web.app') {
       },
       '*',
     );
-    window.getSelection().removeAllRanges();
-    document.querySelector('[touch-action]').dispatchEvent(
-      new Event('pointerdown', {
-        bubbles: true,
-      }),
-    );
   };
 
   api.mapkey('gA', 'Add new header tag', addNewHeaderTag);
