@@ -721,7 +721,7 @@ if (location.host === 'roampdf.web.app') {
       if (elem.classList.contains('selected'))
         elem.style.outline = 'solid gray';
       else {
-        elem.style.outline = 'solid white';
+        elem.style.outline = 'solid black';
         elem.classList.add('selected');
       }
       seleQueue.push({
