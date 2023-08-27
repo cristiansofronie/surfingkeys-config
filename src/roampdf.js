@@ -292,15 +292,6 @@ if (location.host === 'roampdf.web.app') {
   api.mapkey('ga', 'Add new header tag in a smart way', addHeaderSmart);
   api.vmapkey('ga', 'Add new header tag in a smart way', addHeaderSmart);
 
-  // api.mapkey('gP', 'Pop pane', () => {
-  //   parent.postMessage(
-  //     {
-  //       actionType: 'popPane',
-  //     },
-  //     '*',
-  //   );
-  // });
-
   api.mapkey('gn', 'Nest PDF Highlights', () => {
     parent.postMessage(
       {
@@ -352,22 +343,6 @@ if (location.host === 'roampdf.web.app') {
   api.mapkey('C', 'Automation highlight making', () => {
     seleQueue = [];
   });
-
-  // let lastMouseMove = {
-  //   target: null,
-  //   pageX: -1,
-  //   pageY: -1,
-  //   clientX: -1,
-  //   clientY: -1
-  // };
-
-  // document.addEventListener('pointermove', (e) => {
-  //   lastMouseMove.target = e.target;
-  //   lastMouseMove.pageX = e.pageX;
-  //   lastMouseMove.pageY = e.pageY;
-  //   lastMouseMove.clientX = e.clientX;
-  //   lastMouseMove.clientY = e.clientY;
-  // });
 
   let seleQueue = [];
 
@@ -590,16 +565,6 @@ if (location.host === 'roampdf.web.app') {
       '',
     );
   });
-
-  // api.mapkey('gt', 'Make selections', async () => {
-  //   await makeHighs();
-
-  //   setTimeout(() => {
-  //     parent.postMessage({
-  //       actionType: 'nestPartHigh'
-  //     }, '*');
-  //   });
-  // });
 
   api.mapkey('gq', 'Fast single highlight', async () => {
     await addSeleQueueTwice();
