@@ -236,6 +236,7 @@ if (
   api.mapkey('ac', 'Copy answer', () => {
     api.Hints.create(getElems('.s-prose'), elem => {
       const page = window.prompt('Page name:', document.title);
+      if (!page) return;
       let clip = '<ul><li><span>' + escapeHTML(`[[${page}]]`) + '</span><ul>';
       clip += parseDOMToRoam(elem, '');
 
