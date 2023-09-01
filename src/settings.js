@@ -1,10 +1,8 @@
 export const leader = '<Space>';
 
 export const setSettings = () => {
-  // settings.scrollStepSize = 200;
   settings.omnibarMaxResults = 30;
   settings.useNeovim = false;
-  // settings.textAnchorPat = /(^[\n\r\s]*\S+|\b\S+)/g;
   settings.textAnchorPat = /(^[\n\r\s]*\S+|\b\S+)/g;
   settings.pageUrlRegex = [/(https:\/\/[^\s]+?\/?)(\d+)(\/[^\s]+\/?)/];
   settings.clickableSelector =
@@ -14,7 +12,6 @@ export const setSettings = () => {
   settings.smoothScroll = true;
   settings.modeAfterYank = 'Normal';
   settings.omnibarHistoryCacheSize = 100;
-  // settings.focusFirstCandidate = true;
   settings.richHintsForKeystroke = 100;
   settings.historyMUOrder = false;
   settings.defaultSearchEngine = 'gg';
