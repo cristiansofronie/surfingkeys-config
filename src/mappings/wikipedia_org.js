@@ -32,6 +32,10 @@ if (/wikipedia\.org/.test(location.href)) {
     openSearchRoam(document.querySelector('#firstHeading').textContent);
   });
 
+  api.mapkey(`${leader}yT`, 'Copy article title in Wikipedia', async () => {
+    api.Clipboard.write(document.querySelector('#firstHeading').textContent);
+  });
+
   api.mapkey('gs', 'What links here', () => {
     location.assign(
       location.origin +
