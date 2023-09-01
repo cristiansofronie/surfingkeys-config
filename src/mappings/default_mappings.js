@@ -41,8 +41,6 @@ for (let i = 0; i < 10; i++) {
 
 api.map('<Alt-I>', '<Alt-s>');
 
-api.unmap('sG');
-api.unmap('sg');
 api.unmap('<Alt-s>');
 api.unmap('ga');
 api.unmap('gt');
@@ -357,7 +355,7 @@ api.mapkey('sw', 'Search in another browser instance', () => {
   searchWikipedia(sele);
 });
 
-api.mapkey('sg', 'Search in another browser instance', async () => {
+api.mapkey(`<leader>sg`, 'Search in another browser instance', async () => {
   const sele = document.getSelection().toString();
   searchGoogle(sele);
 });

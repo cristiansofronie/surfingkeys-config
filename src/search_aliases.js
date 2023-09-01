@@ -1,5 +1,16 @@
 import { leader } from './settings';
 
+api.unmap('sG');
+api.unmap('sg');
+
+api.removeSearchAlias('e');
+api.removeSearchAlias('y');
+api.removeSearchAlias('s');
+api.removeSearchAlias('g');
+api.removeSearchAlias('b');
+api.removeSearchAlias('d');
+api.removeSearchAlias('w');
+
 const handleYoutubeSuggestions = resp => {
   const res = JSON.parse(resp.text.substr(9, resp.text.length - 10));
   return res[1].map(d => d[0]);
@@ -9,14 +20,6 @@ const googleSuggestion = resp => {
   const res = JSON.parse(resp.text);
   return res[1];
 };
-
-api.removeSearchAlias('e');
-api.removeSearchAlias('y');
-api.removeSearchAlias('s');
-api.removeSearchAlias('g');
-api.removeSearchAlias('b');
-api.removeSearchAlias('d');
-api.removeSearchAlias('w');
 
 api.addSearchAlias(
   'k',
