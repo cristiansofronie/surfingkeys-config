@@ -82,7 +82,7 @@ if (location.hostname === 'www.youtube.com') {
       window.innerHeight * 0.9;
   });
 
-  api.mapkey('<Space>fc', 'Expand commens on Youtube', () => {
+  api.mapkey(`${leader}fc`, 'Expand commens on Youtube', () => {
     api.Hints.create(
       getElems('#more-replies'),
       elem => {
@@ -104,7 +104,7 @@ if (location.hostname === 'www.youtube.com') {
       '/videos?view=57';
   });
 
-  api.mapkey('<Space>gt', 'Show transcripts', () => {
+  api.mapkey(`${leader}gt`, 'Show transcripts', () => {
     document.querySelector('[aria-label="More actions"]').click();
     window.setTimeout(() => {
       [...document.querySelectorAll('.ytd-menu-service-item-renderer')]

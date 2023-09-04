@@ -127,7 +127,7 @@ api.mapkey('ys', 'Copy selection', copySelectionToRoam);
 
 api.vmapkey('ys', 'Copy selection', copySelectionToRoam);
 
-api.mapkey('<Space>yr', 'Copy element for Roam', () => {
+api.mapkey(`${leader}yr`, 'Copy element for Roam', () => {
   api.Hints.create([...document.querySelectorAll('*')], e => {
     let clip = '<ul><li><span>' + escapeHTML('[[<>]]') + '</span><ul>';
     clip += '<li>' + location.href + '</li>';
@@ -495,7 +495,7 @@ api.mapkey('yH', 'Copy second to top part of the host name', () => {
   api.Clipboard.write(location.host.split('.').at(-2));
 });
 
-api.mapkey('<Space>vf', 'Focus video', () => {
+api.mapkey(`${leader}vf`, 'Focus video', () => {
   api.Hints.create([...document.querySelectorAll('video')], e => {
     e.focus();
   });
@@ -597,13 +597,13 @@ api.mapkey('<F10>', 'Increase volume for YouTube', () => {
   saveNativeVolume(100);
 });
 
-api.mapkey('<Space><Space>v', 'Set Youtube Volume to 100%', () => {
+api.mapkey(`${leader}${leader}v`, 'Set Youtube Volume to 100%', () => {
   saveNativeVolume(100);
   saveYouTubeSessionValue(5);
   document.querySelector('video').volume = 0.05;
 });
 
-api.mapkey('<Space><Space>j', 'Decrease volume', () => {
+api.mapkey(`${leader}${leader}j`, 'Decrease volume', () => {
   api.Hints.create(
     getElems('video'),
     video => {
@@ -615,7 +615,7 @@ api.mapkey('<Space><Space>j', 'Decrease volume', () => {
   );
 });
 
-api.mapkey('<Space><Space>l', 'Increase volume', () => {
+api.mapkey(`${leader}${leader}l`, 'Increase volume', () => {
   api.Hints.create(
     getElems('video'),
     video => {
@@ -746,14 +746,14 @@ api.mapkey(
   },
 );
 
-api.mapkey('<Space>sc', 'Search Cambridge Dictionary', async () => {
+api.mapkey(`${leader}sc`, 'Search Cambridge Dictionary', async () => {
   const txt = await textRange(/\w+/g, /\w+/g);
   prevSearchQuery = txt;
   searchCambridge(txt);
   searchRoam(txt.replace(/(s|ed|es)$/g, '') + ' english word');
 });
 
-api.mapkey('<Space>yt', 'Copy text range', async () => {
+api.mapkey(`${leader}yt`, 'Copy text range', async () => {
   const txt = await textRange(/[\w-_]+/g, /[\w-_]+/g);
   prevSearchQuery = txt;
   api.Clipboard.write(txt);
@@ -800,7 +800,7 @@ api.mapkey(`${leader}sp`, 'Search Exact Phrase', async () => {
   });
 });
 
-api.mapkey('<Space>sa', 'Serch Element in Serch Engines', () => {
+api.mapkey(`${leader}sa`, 'Serch Element in Serch Engines', () => {
   api.Hints.create(
     getElems('*'),
     elem => {
@@ -812,7 +812,7 @@ api.mapkey('<Space>sa', 'Serch Element in Serch Engines', () => {
   );
 });
 
-api.mapkey('<Space>oy', 'Open with specified input', () => {
+api.mapkey(`${leader}oy`, 'Open with specified input', () => {
   const msg = {
     type: 'URLs',
     action: 'openOmnibar',
@@ -837,14 +837,14 @@ const fetchData = url => {
   );
 };
 
-api.mapkey('<Space><Space>d', 'Fetch random URLs', () => {
+api.mapkey(`${leader}${leader}d`, 'Fetch random URLs', () => {
   console.log('Should fetch data!');
   fetchData(
     'https://levelup.gitconnected.com/how-to-use-react-js-to-create-chrome-extension-in-5-minutes-2ddb11899815',
   );
 });
 
-api.mapkey('<Space>se', 'Search Content of Entire Elements in Roam', () => {
+api.mapkey(`${leader}se`, 'Search Content of Entire Elements in Roam', () => {
   api.Hints.create(
     [...document.querySelectorAll('*')]
       .filter(e => e.textContent.trim().length !== 0)
@@ -871,11 +871,11 @@ const downloadWholeWebsite = URL => {
   api.Front.showBanner(`Downloading ${URL}`);
 };
 
-api.mapkey('<Space>dw', 'Downlod whole website', () => {
+api.mapkey(`${leader}dw`, 'Downlod whole website', () => {
   downloadWholeWebsite(location.href);
 });
 
-api.mapkey('<Space><Space>b', 'Show sync engine info', () => {
+api.mapkey(`${leader}${leader}b`, 'Show sync engine info', () => {
   chrome.runtime.sendMessage(browserSyncID, {
     actionType: 'getSyncEngineInfo',
   });

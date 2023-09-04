@@ -628,7 +628,7 @@ if (location.host === 'roampdf.web.app') {
     );
   }
 
-  // api.mapkey('<Space>sc', 'Search Cambridge Dictionary', async () => {
+  // api.mapkey(`${leader}sc`, 'Search Cambridge Dictionary', async () => {
   //   const txt = await textRange(/\w+/g, /\w+/g);
   //   prevSearchQuery = txt;
   //   searchCambridge(txt);

@@ -423,7 +423,7 @@ api.addSearchAlias(
   's',
 );
 
-api.mapkey('<Space>su', 'Custom URLs', () => {
+api.mapkey(`${leader}su`, 'Custom URLs', () => {
   const entries = [
     {
       title: 'First',

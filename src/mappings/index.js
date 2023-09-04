@@ -293,7 +293,7 @@ if (location.href.startsWith('https://10fastfingers.com')) {
 }
 
 if (location.host === 'www.twitch.tv') {
-  api.mapkey('<Space>ga', 'Go to all videos', () => {
+  api.mapkey(`${leader}ga`, 'Go to all videos', () => {
     location.search = '?filter=all&sort=time';
   });
 
@@ -307,13 +307,13 @@ if (location.host === 'www.twitch.tv') {
 }
 
 if (location.href.includes('roamresearch.com/')) {
-  api.mapkey('<Space>t', 'Test stuff in Roam', () => {
+  api.mapkey(`${leader}t`, 'Test stuff in Roam', () => {
     api.insertJS(async () => {
       window.testHotReload();
     });
   });
 
-  api.mapkey('<Space>a', 'Open article in sidebar', () => {
+  api.mapkey(`${leader}a`, 'Open article in sidebar', () => {
     api.insertJS(async () => {
       const UID = location.href.split('/').pop();
       roamAlphaAPI.ui.rightSidebar.addWindow({
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
     location.host.includes('gitlab') ||
     document.title.includes('GitLab')
   )
-    api.mapkey('<Space>drg', 'Download GitLab repository', () => {
+    api.mapkey(`${leader}drg`, 'Download GitLab repository', () => {
       downloadGitHubRepo(location.href);
     });
 });
