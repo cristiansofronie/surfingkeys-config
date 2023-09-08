@@ -70,6 +70,12 @@ api.addSearchAlias(
   's',
 );
 api.addSearchAlias(
+  'bi',
+  'Bible',
+  'https://www.biblegateway.com/passage/?search={0}&version=NRSVUE',
+  's',
+);
+api.addSearchAlias(
   'ut',
   'Github Topics',
   'https://github.com/search?q={0}&type=topics',
@@ -106,7 +112,7 @@ api.addSearchAlias(
   's',
 );
 api.addSearchAlias(
-  'b',
+  'bo',
   'Google Books',
   'https://www.google.com/search?q={0}&tbm=bks',
   's',

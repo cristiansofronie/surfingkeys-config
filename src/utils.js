@@ -631,7 +631,7 @@ export const downloadGitHubRepo = repo => {
       repo,
     },
   };
-  ws.send(JSON.stringify(msg));
+  window.ws.send(JSON.stringify(msg));
   api.Front.showBanner(`Downloading ${repo}`);
 };
 

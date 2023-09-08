@@ -463,8 +463,8 @@ api.mapkey(`${leader}${leader}e`, 'Copy range for Roam at once', () => {
 
 api.mapkey(`${leader}yu`, 'Copy all URLs in current window', async () => {
   const tabs = await getWinTabs();
-  const urls = tabs.map(tab => tab.url);
-  api.Clipboard.write(urls.join('\n') + '\n' + location.href);
+  const urls = [...new Set(tabs.map(tab => tab.url))];
+  api.Clipboard.write(urls.join('\n'));
 });
 
 api.mapkey(`${leader}h`, 'Navigate to link from Clipboard', () => {
@@ -776,6 +776,11 @@ api.mapkey(`${leader}yr`, 'Copy text range for Roam', async () => {
 api.mapkey(`${leader}sr`, 'Search Roam', async () => {
   const txt = await textRange(/\w+/g, /\w+/g);
   searchRoam(txt);
+});
+
+api.mapkey(`${leader}so`, 'Open page in Roam', async () => {
+  const txt = await textRange(/\w+/g, /\w+/g);
+  openSearchRoam(txt);
 });
 
 api.mapkey(`${leader}sw`, 'Search Wikipedia', () => {
