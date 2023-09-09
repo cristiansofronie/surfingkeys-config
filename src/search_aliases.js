@@ -59,7 +59,7 @@ api.addSearchAlias(
 );
 api.addSearchAlias(
   'ug',
-  'Github Goole Search',
+  'Github Google search',
   'https://www.google.com/search?q=site%3Agithub.com+',
   's',
 );

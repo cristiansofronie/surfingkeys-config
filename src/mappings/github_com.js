@@ -57,9 +57,7 @@ if (location.hostname === 'github.com') {
   });
 
   api.mapkey(`${leader}drg`, 'Download GitHub Repository', () => {
-    const repo =
-      'github.com/' + location.pathname.split('/').slice(1, 3).join('/');
-    downloadGitHubRepo(repo);
+    downloadGitHubRepo(location.href);
   });
 
   api.mapkey(`${leader}ss`, 'Search source for current repo', () => {
