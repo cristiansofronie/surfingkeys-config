@@ -339,7 +339,7 @@ api.mapkey(`${leader}N`, 'Open link from clipboard in same tab', () => {
   });
 });
 
-api.mapkey('ol', 'Open link from clipboard in current tab', () => {
+api.mapkey(`${leader}ol`, 'Open link from clipboard in current tab', () => {
   api.Clipboard.read(clip => {
     api.RUNTIME('openLink', {
       tab: {
