@@ -40,8 +40,11 @@ for (let i = 0; i < 10; i++) {
 }
 
 api.map('<Alt-I>', '<Alt-s>');
+api.map('<Alt-Esc>', '<Esc>');
 
+api.unmap('<Esc>');
 api.unmap('<Alt-s>');
+
 api.unmap('ga');
 api.unmap('gt');
 
@@ -974,7 +977,7 @@ api.mapkey(`${leader}drs`, 'Download a repo from selection', () => {
 });
 
 api.mapkey(`${leader}dri`, 'Download GitHub Repository', () => {
-  const repo = 'github.com/' + prompt('Enter GitHub repository: ');
+  const repo = 'https://github.com/' + prompt('Enter GitHub repository: ');
   downloadGitHubRepo(repo);
 });
 
@@ -986,7 +989,7 @@ api.mapkey(`${leader}dra`, 'Download GitHub Repository', () => {
     elem => {
       const repoURL = new URL(elem.href);
       const repo =
-        'github.com/' + repoURL.pathname.split('/').slice(1, 3).join('/');
+        'https://github.com/' + repoURL.pathname.split('/').slice(1, 3).join('/');
       downloadGitHubRepo(repo);
     },
     {

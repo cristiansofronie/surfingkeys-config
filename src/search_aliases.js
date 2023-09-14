@@ -76,6 +76,12 @@ api.addSearchAlias(
   's',
 );
 api.addSearchAlias(
+  'bs',
+  'Bible',
+  'https://www.biblegateway.com/quicksearch/?quicksearch={0}&version=NIV',
+  's',
+);
+api.addSearchAlias(
   'ut',
   'Github Topics',
   'https://github.com/search?q={0}&type=topics',

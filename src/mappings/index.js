@@ -333,6 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.title.includes('GitLab')
   )
     api.mapkey(`${leader}drg`, 'Download GitLab repository', () => {
-      downloadGitHubRepo(location.href);
+      downloadGitHubRepo(location.origin + location.pathname);
     });
 });

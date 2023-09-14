@@ -21,7 +21,6 @@ if (location.hostname === 'github.com') {
     let clip = '';
     clip += '<ul><li><span>' + escapeHTML('[[<>]]') + '</span><ul>';
 
-    // clip += '<li>{{[[iframe]]: ' + escapeHTML('https://web.archive.org/' + location.href) + '}}</li>'
     clip += '<li>{{[[iframe]]: ' + escapeHTML(location.href) + '}}</li>';
     clip += '<li>' + escapeHTML(location.href) + '</li>';
 
@@ -57,7 +56,9 @@ if (location.hostname === 'github.com') {
   });
 
   api.mapkey(`${leader}drg`, 'Download GitHub Repository', () => {
-    downloadGitHubRepo(location.href);
+    const repo =
+      'https://github.com/' + location.pathname.split('/').slice(1, 3).join('/');
+    downloadGitHubRepo(repo);
   });
 
   api.mapkey(`${leader}ss`, 'Search source for current repo', () => {

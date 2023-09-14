@@ -151,7 +151,6 @@ if (new URL(location).searchParams.get('auto_open_first') === 'true') {
 
 const logSrc = () => {
   const found = new Set();
-  console.log('Src:');
   document.querySelectorAll('[href^="http://github.com"]').forEach(e => {
     console.log(e.href);
     found.add(e.href);
