@@ -9,6 +9,7 @@ import './youtube_com';
 import './wiki_archlinux_org';
 import './digitalocean_com';
 import './wikipedia_org';
+import './www_biblegateway_com';
 
 import {
   mapAllClick,
