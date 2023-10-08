@@ -62,6 +62,12 @@ api.mapkey('<Alt-Tab>', 'Focus previous tab by time', () => {
   });
 });
 
+api.imapkey('<Alt-Tab>', 'Focus previous tab by time', () => {
+  chrome.runtime.sendMessage(browserSyncID, {
+    actionType: 'focusPrevTab',
+  });
+});
+
 api.mapkey('\\', 'Play or pause', () => {
   const videos = [...document.getElementsByTagName('video')];
   if (videos.length > 1) {
