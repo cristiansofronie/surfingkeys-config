@@ -258,7 +258,7 @@ api.addSearchAlias(
   handleYoutubeSuggestions,
 );
 api.addSearchAlias(
-  'o',
+  'dy',
   'Odysee',
   'https://odysee.com/$/search?q=',
   's',
