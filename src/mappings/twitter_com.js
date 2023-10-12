@@ -3,7 +3,7 @@ import { leader } from '../settings';
 if (location.host === 'twitter.com') {
   const style = document.createElement('style');
   style.textContent = `
-    [aria-label="New Tweets are available. Push the period key to go to the them."] {
+    [aria-label="New posts are available. Push the period key to go to the them."] {
       display: none;
     }
   `;
