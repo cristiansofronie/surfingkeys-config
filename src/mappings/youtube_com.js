@@ -60,7 +60,7 @@ if (location.hostname === 'www.youtube.com') {
     document.querySelector('#video-title-link').click();
   });
 
-  api.mapkey(`${leader}cs`, 'Skip ads', () => {
+  api.mapkey(`${leader}ci`, 'Skip ads', () => {
     document.getElementsByClassName('ytp-ad-skip-button')[0].click();
   });
 
