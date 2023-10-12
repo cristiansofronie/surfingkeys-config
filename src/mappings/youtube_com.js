@@ -60,6 +60,10 @@ if (location.hostname === 'www.youtube.com') {
     document.querySelector('#video-title-link').click();
   });
 
+  api.mapkey(`${leader}cs`, 'Skip ads', () => {
+    document.getElementsByClassName('ytp-ad-skip-button')[0].click();
+  });
+
   api.mapkey(leader + 'ov', 'Open YouTube video', () => {
     api.Hints.create(
       getElems('#video-title-link'),
