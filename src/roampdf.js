@@ -1,7 +1,43 @@
 import { getElems, UIGuard, textRange, getVisibleElems } from './utils';
 import { leader } from './settings';
 
-if (location.host === 'roampdf.web.app') {
+if (location.hostname === 'roampdf.web.app') {
+  // document.documentElement.style.overflowY = 'clip';
+
+  // const style = document.createElement('style');
+  // style.textContent = `
+  //   .textLayer {
+  //       overflow-y: clip;
+  //   }
+  // `;
+  // document.head.prepend(style);
+
+  api.mapkey(`${leader}${leader}m`, 'Set mark', () => {
+    api.Hints.create([...document.getElementsByClassName('page')], elem => {
+      const bBox = elem.getBoundingClientRect();
+      const y = bBox.height + bBox.y;
+      window.scrollMark = {
+        scrollTo: {
+          position: {
+            boundingRect: {
+              x1: 0,
+              y1: y,
+              x2: 0,
+              y2: y,
+              width: 1,
+              height: 1,
+            },
+            pageNumber: parseInt(elem.dataset.pageNumber),
+          },
+        },
+      };
+    });
+  });
+
+  api.mapkey(`${leader}'`, 'Search for Roam pages', async () => {
+    window.postMessage(window.scrollMark);
+  });
+
   window.addEventListener('blur', () => {
     document.querySelector('body').style.outline = '';
   });
@@ -706,7 +742,7 @@ if (location.host === 'roampdf.web.app') {
         seleQueue.push({
           elem: elem,
           type: 'area',
-          scroll: document.querySelector('.PdfHighlighter').scrollTop,
+          scroll: document.getElementsByClassName('PdfHighlighter')[0].scrollTop,
           eventType: 'mousedown',
           target: elem
             .getRootNode()
@@ -725,7 +761,7 @@ if (location.host === 'roampdf.web.app') {
         seleQueue.push({
           elem: elem,
           type: 'area',
-          scroll: document.querySelector('.PdfHighlighter').scrollTop,
+          scroll: document.getElementsByClassName('PdfHighlighter').scrollTop,
           eventType: 'mouseup',
           event: new MouseEvent('mouseup', {
             bubbles: true,
@@ -978,7 +1014,7 @@ if (location.host === 'roampdf.web.app') {
       txtLayer => {
         const limit = 10;
         const elems = [...txtLayer.querySelectorAll('span')].sort(
-          (a, b) => parseFloat(a.style.top) - parseFloat(b.style.top) + limit
+          (a, b) => parseFloat(a.style.top) - parseFloat(b.style.top) + limit,
         );
 
         const lineHeights = elems.map(e => e.getBoundingClientRect().height);

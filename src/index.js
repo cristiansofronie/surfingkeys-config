@@ -128,8 +128,9 @@ addEventListener('DOMContentLoaded', () => {
     setTimeout(api.Normal.feedkeys, 100, 'x');
   }
 
-  if (document.hasFocus())
+  if (document.hasFocus()) {
     searchRoam(document.getElementsByTagName('h1')[0].textContent);
+  }
 });
 
 window.setTimeout(detectSPA, 50);

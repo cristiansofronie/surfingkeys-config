@@ -10,7 +10,7 @@ const resolveHref = (e, originLocation = location) => {
     href = tmpHref.href;
   }
   return href;
-}
+};
 
 const parseElemChildren = (e, filterQuery, props) => {
   return [...e.childNodes]
@@ -32,7 +32,10 @@ export const parseDOMToRoam = (
     );
   }
 
-  if (e.nodeType === 1 && filterQuery && e.matches(filterQuery)) return '';
+  if (e.nodeType === 1 && filterQuery && e.matches(filterQuery)) {
+    return '';
+  }
+
   switch (e.nodeName) {
     case '#text':
       if (/^\n\s+$/.test(e.nodeValue)) return '';
@@ -173,7 +176,7 @@ export const parseDOMToRoam = (
     case 'CITE':
       return parseElemChildren(e, filterQuery, props);
     case 'DIV':
-      return parseElemChildren(e, filterQuery, props);
+      return '<li>' + parseElemChildren(e, filterQuery, props).trim() + '</li>';
     case 'FIGURE':
       return parseElemChildren(e, filterQuery, props);
     case 'MAIN':
@@ -226,4 +229,4 @@ export const parseDOMToRoam = (
     default:
       return '<li>' + parseElemChildren(e, filterQuery, props) + '</li>';
   }
-}
+};

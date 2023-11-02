@@ -289,7 +289,7 @@ if (location.href.startsWith('https://10fastfingers.com')) {
     api.Hints.dispatchMouseClick(document.getElementsByTagName('input')[0]);
   }, 1000);
   api.mapkey('f', 'Reload 10fastfingers' + document.domain, () => {
-    api.Hints.create(getElems('#reload-btn'), Hints.dispatchMouseClick);
+    api.Hints.create(getElems('#reload-btn'), api.Hints.dispatchMouseClick);
   });
 }
 

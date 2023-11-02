@@ -2,6 +2,11 @@ import { mapAllClick } from '../utils';
 import { leader } from '../settings';
 
 if (location.hostname === 'www.youtube.com') {
+  setInterval(() => {
+    document.getElementsByClassName('ytp-ad-skip-button-text')[0]?.click();
+  }, 1000);
+
+
   document.head.appendChild(
     Object.assign(document.createElement('style'), {
       textContent: `#movie_player {
@@ -61,7 +66,7 @@ if (location.hostname === 'www.youtube.com') {
   });
 
   api.mapkey(`${leader}ci`, 'Skip ads', () => {
-    document.getElementsByClassName('ytp-ad-skip-button')[0].click();
+    document.getElementsByClassName('ytp-ad-skip-button-text')[0].click();
   });
 
   api.mapkey(leader + 'ov', 'Open YouTube video', () => {

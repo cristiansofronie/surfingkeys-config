@@ -29,11 +29,11 @@ if (/wikipedia\.org/.test(location.href)) {
   });
 
   api.mapkey(`${leader}t`, 'Open in Roam', async () => {
-    openSearchRoam(document.querySelector('#firstHeading').textContent);
+    openSearchRoam(document.getElementById('firstHeading').textContent);
   });
 
   api.mapkey(`${leader}yT`, 'Copy article title in Wikipedia', async () => {
-    api.Clipboard.write(document.querySelector('#firstHeading').textContent);
+    api.Clipboard.write(document.getElementById('firstHeading').textContent);
   });
 
   api.mapkey('gs', 'What links here', () => {
@@ -106,31 +106,23 @@ if (/wikipedia\.org/.test(location.href)) {
       const page = window.prompt('Page: ', firstHead.textContent.toTitleCase());
       if (!page) return;
       let clip =
-        '<ul><li><span>' + escapeHTML('[[' + page + ']]') + '</span><ul>';
+        '<ul><li><span>' + escapeHTML('[[' + page + ']]\n' + 'Wiki for ' + page) + '</span><ul>';
 
       const url = location.href;
       clip += '<li><span>' + url + '</span></li>';
-      clip += '<li><span>{{[[iframe]]: ' + url + '}}</span></li>';
 
       clip += parseDOMToRoam(
         e,
         'style, .mw-empty-elt, .shortdescription, .hatnote, .sistersitebox, .plainlinks, .infobox, .sidebar, .navbox-inner, .sistersitebox, .metadata > table',
       );
 
-      clip += '<li><h3>' + 'Source' + '</h3></li>';
-      clip += '<li>' + location.href + '</li>';
+      clip += '<li><h3>' + 'Related' + '</h3></li>';
+
+      clip += '<li><h3>' + 'Iframe' + '</h3></li>';
+      clip += '<li><span>{{[[iframe]]: ' + url + '}}</span></li>';
 
       clip += '</ul></li>';
-      [
-        ...document
-          .getElementById('mw-normal-catlinks')
-          .getElementsByTagName('li'),
-      ].forEach(e => {
-        clip += `<li>#[[child page]] [[${e.textContent}]] [[${firstHead.textContent}]]</li>`;
-        clip += `<li><span>[[${e.textContent}]]</span><ul><li>${
-          e.querySelector('a').href
-        }</li></ul></li>`;
-      });
+
       clip += '</ul>';
 
       pasteToRoam(clip);

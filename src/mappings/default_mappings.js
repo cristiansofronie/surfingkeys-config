@@ -56,6 +56,10 @@ api.mapkey('u', 'Scroll one page up', () => {
   api.Normal.scroll('fullPageUp');
 });
 
+api.mapkey(`${leader}q`, 'Clear selection', () => {
+  window.getSelection().removeAllRanges();
+});
+
 api.mapkey('<Alt-Tab>', 'Focus previous tab by time', () => {
   chrome.runtime.sendMessage(browserSyncID, {
     actionType: 'focusPrevTab',
@@ -71,21 +75,35 @@ api.imapkey('<Alt-Tab>', 'Focus previous tab by time', () => {
 api.mapkey('\\', 'Play or pause', () => {
   const videos = [...document.getElementsByTagName('video')];
   if (videos.length > 1) {
+    api.Hints.create(videos, video => {
+      if (video.paused) video.play();
+      else video.pause();
+    });
+  } else if (videos.length == 1) {
+    if (videos[0].paused) videos[0].play();
+    else videos[0].pause();
+  } else {
     api.Hints.create(
-      videos,
-      video => {
-        if (video.paused) video.play();
-        else video.pause();
-      },
-      {
-        multipleHits: false,
+      [
+        ...document.querySelectorAll(
+          '[aria-label="Pause"], [aria-label="Play"]',
+        ),
+      ],
+      label => {
+        label.click();
       },
     );
-  } else {
-    const video = videos[0];
-    if (video.paused) video.play();
-    else video.pause();
   }
+});
+
+api.mapkey(`${leader}gs`, 'Go to Chromium settings', () => {
+  api.RUNTIME('openLink', {
+    tab: {
+      tabbed: true,
+      active: true,
+    },
+    url: 'chrome://settings',
+  });
 });
 
 api.mapkey(`${leader}vl`, 'Loop video', () => {
@@ -995,7 +1013,8 @@ api.mapkey(`${leader}dra`, 'Download GitHub Repository', () => {
     elem => {
       const repoURL = new URL(elem.href);
       const repo =
-        'https://github.com/' + repoURL.pathname.split('/').slice(1, 3).join('/');
+        'https://github.com/' +
+        repoURL.pathname.split('/').slice(1, 3).join('/');
       downloadGitHubRepo(repo);
     },
     {

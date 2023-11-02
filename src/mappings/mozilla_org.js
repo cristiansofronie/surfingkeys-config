@@ -1,4 +1,4 @@
-import { pasteToRoam, setClipboard, escapeHTML } from '../utils';
+import { getElems, pasteToRoam, setClipboard, escapeHTML } from '../utils';
 import { parseDOMToRoam } from '../domparser';
 import { leader } from '../settings';
 
@@ -23,7 +23,7 @@ if (location.host === 'developer.mozilla.org') {
       )}]] [[${prefix} ${escapeHTML(firstHead.textContent)}]]</li>`;
 
       pasteToRoam(clip);
-      api.Front.showBanner('Sent Wikipedia page to Roam.');
+      api.Front.showBanner('Sent MDN page to Roam.');
     });
   });
 
