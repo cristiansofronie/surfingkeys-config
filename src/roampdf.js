@@ -12,18 +12,17 @@ if (location.hostname === 'roampdf.web.app') {
   // `;
   // document.head.prepend(style);
 
-  api.mapkey(`${leader}${leader}m`, 'Set mark', () => {
+  api.mapkey(`M`, 'Set mark', () => {
     api.Hints.create([...document.getElementsByClassName('page')], elem => {
       const bBox = elem.getBoundingClientRect();
-      const y = bBox.height + bBox.y;
       window.scrollMark = {
         scrollTo: {
           position: {
             boundingRect: {
               x1: 0,
-              y1: y,
+              y1: 0,
               x2: 0,
-              y2: y,
+              y2: 0,
               width: 1,
               height: 1,
             },
