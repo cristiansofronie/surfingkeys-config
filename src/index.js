@@ -133,7 +133,7 @@ addEventListener('DOMContentLoaded', () => {
   }
 });
 
-window.setTimeout(detectSPA, 50);
+// window.setTimeout(detectSPA, 50);
 
 if (location.hostname === 'chat.openai.com') {
   const setChatGPTWin = () => {
