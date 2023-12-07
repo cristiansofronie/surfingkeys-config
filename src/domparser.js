@@ -122,8 +122,8 @@ export const parseDOMToRoam = (
       } else {
         return '![](' + e.querySelector('img').src + ')';
       }
-    case 'IFRAME':
-      return '<li>' + escapeHTML('{{[[iframe]]: ' + e.src + '}}') + '</li>';
+    // case 'IFRAME':
+    //   return '<li>' + escapeHTML('{{[[iframe]]: ' + e.src + '}}') + '</li>';
     case 'VIDEO':
       return '<li>' + escapeHTML('{{[[video]]:' + e.src + '}}') + '</li>';
     case 'math':
@@ -198,12 +198,13 @@ export const parseDOMToRoam = (
     case 'ARTICLE':
       return parseElemChildren(e, filterQuery, props);
     case 'TABLE':
-      if (e.querySelector('table')) return; // cannot parse nested tables
-      return (
-        '<li><span>{{[[table]]}}</span><ul>' +
-        parseElemChildren(e, filterQuery, props) +
-        '</ul></li>'
-      );
+      return '';
+
+      // return (
+        // '<li><span>{{[[table]]}}</span><ul>' +
+        // parseElemChildren(e, filterQuery, props) +
+      //   '</ul></li>'
+      // );
     case 'TFOOT':
       return parseElemChildren(e, filterQuery, props);
     case 'TBODY':
