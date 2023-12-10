@@ -213,17 +213,13 @@ if (location.hostname === 'www.linkedin.com') {
 }
 
 if (
-  /stackoverflow\.com/.test(location.href) ||
-  /stackexchange\.com/.test(location.href) ||
-  location.href.startsWith('https://serverfault.com') ||
-  location.href.startsWith('https://superuser.com') ||
-  location.href.startsWith('https://askubuntu.com')
+  window.location.hostname === 'stackoverflow.com' ||
+  window.location.hostname === 'serverfault.com' ||
+  window.location.hostname === 'superuser.com' ||
+  window.location.hostname === 'askubuntu.com' ||
+    window.location.hostname === 'softwareengineering.stackexchange.com'
 ) {
-  // mapkey('J', 'Next answer', () => {
-  //
-  // });
-
-  addEventListener('DOMContentLoaded', () => {
+  window.addEventListener('DOMContentLoaded', () => {
     addUpDownBinds(
       [
         ...document.getElementsByClassName('answer'),
@@ -238,11 +234,11 @@ if (
     api.Hints.create(getElems('.s-prose'), elem => {
       const page = window.prompt('Page name:', document.title);
       if (!page) return;
+
       let clip = '<ul><li><span>' + escapeHTML(`[[${page}]]`) + '</span><ul>';
       clip += parseDOMToRoam(elem, '');
 
-      clip += '<li><h3>' + 'Source' + '</h3></li>';
-      clip += '<li>' + location.href + '</li>';
+      clip += '<li>' + window.location.href + '</li>';
 
       clip += '</ul></li>';
       clip += '</ul>';
