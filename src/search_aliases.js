@@ -196,12 +196,21 @@ api.addSearchAlias(
   's',
 );
 api.addSearchAlias('sc', 'searchcode', 'https://searchcode.com/?q=', 's');
+
 api.addSearchAlias(
-  'gt',
-  'Google Translate to Romanian',
-  'https://translate.google.com/?sl=auto&tl=ro&text={0}%0A&op=translate',
+  'gtr',
+  'Translate English to Romanian',
+  'https://translate.google.com/?sl=en&tl=ro&text={0}%0A&op=translate',
   's',
 );
+
+api.addSearchAlias(
+  'gte',
+  'Translate Romanian to English',
+  'https://translate.google.com/?sl=ro&tl=en&text={0}%0A&op=translate',
+  's',
+);
+
 api.addSearchAlias(
   'r',
   'Reverso',
